@@ -4,3 +4,5 @@ bundle.js
 .env
 *.js
 dist
+public
+
