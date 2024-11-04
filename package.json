@@ -1,27 +1,40 @@
 {
-  "name": "drag-drop",
+  "name": "@bicycle-codes/drag-drop",
   "description": "HTML5 drag & drop for humans",
   "version": "7.2.0",
-  "author": {
-    "name": "Feross Aboukhadijeh",
-    "email": "feross@feross.org",
-    "url": "https://feross.org"
-  },
-  "bugs": {
-    "url": "https://github.com/feross/drag-drop/issues"
+  "files": [
+    "./dist/*"
+  ],
+  "scripts": {
+    "start": "vite",
+    "lint": "eslint \"./**/*.{ts,js}\"",
+    "example": "browserify -s DragDrop -r . > example/drag-drop.js && ecstatic example --port 4000",
+    "size": "browserify -s DragDrop -r . | minify | gzip | wc -c",
+    "toc": "markdown-toc --maxdepth 3 -i README.md",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-esm:min && npm run build-cjs:min",
+    "build-example": "mkdir -p ./public && rm -rf ./public/* && VITE_DEBUG_MODE=staging vite --mode staging --base=\"/drag-drop\" build",
+    "test": "tape test/*.js",
+    "preversion": "npm run lint",
+    "version": "npm run toc && auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
+    "postversion": "git push --follow-tags && npm publish",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "blob-to-buffer": "^1.2.9",
     "run-parallel": "^1.2.0"
   },
   "devDependencies": {
-    "babel-minify": "^0.5.1",
-    "browserify": "^17.0.0",
-    "ecstatic": "^4.1.4",
-    "standard": "*",
-    "tape": "^5.2.2"
+    "@bicycle-codes/debug": "^0.6.16",
+    "@bicycle-codes/tapzero": "^0.10.5",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "markdown-toc": "^1.2.0",
+    "postcss-nesting": "^13.0.1",
+    "tap-spec": "^5.0.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
   },
-  "homepage": "https://github.com/feross/drag-drop",
+  "homepage": "https://github.com/bicycle-codes/drag-drop",
   "keywords": [
     "drag",
     "drop",
@@ -30,8 +43,7 @@
     "drag drop",
     "html5",
     "drag & drop",
-    "frontend",
-    "browserify"
+    "frontend"
   ],
   "license": "MIT",
   "main": "index.js",
@@ -39,10 +51,16 @@
     "type": "git",
     "url": "git://github.com/feross/drag-drop.git"
   },
-  "scripts": {
-    "example": "browserify -s DragDrop -r . > example/drag-drop.js && ecstatic example --port 4000",
-    "size": "browserify -s DragDrop -r . | minify | gzip | wc -c",
-    "test": "standard && tape test/*.js"
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "https://feross.org"
+  },
+  "contributors": [
+    "Nick Thomas <nichoth@nichoth.com> (https://nichoth./com)"
+  ],
+  "bugs": {
+    "url": "https://github.com/bicycle-codes/drag-drop/issues"
   },
   "funding": [
     {

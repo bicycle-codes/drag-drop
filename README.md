@@ -9,6 +9,13 @@
 [standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [standard-url]: https://standardjs.com
 
+<details><summary><h2>Contents</h2></summary>
+<!-- toc -->
+</details>
+
+## fork
+This is a fork of [feross/drag-drop](https://github.com/feross/drag-drop).
+
 ### HTML5 drag & drop for humans
 
 In case you didn't know, the
