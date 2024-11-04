@@ -1,5 +1,5 @@
 {
-  "name": "@bicycle-codes/drag-drop",
+  "name": "drag-drop",
   "description": "HTML5 drag & drop for humans",
   "version": "7.2.0",
   "type": "module",
