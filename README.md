@@ -10,13 +10,32 @@
 [standard-url]: https://standardjs.com
 
 <details><summary><h2>Contents</h2></summary>
+
 <!-- toc -->
+
+- [fork](#fork)
+  * [HTML5 drag & drop for humans](#html5-drag--drop-for-humans)
+  * [live demo](#live-demo)
+  * [features](#features)
+  * [install](#install)
+  * [usage](#usage)
+  * [complete example](#complete-example)
+  * [get files as buffers](#get-files-as-buffers)
+  * [detect drag-and-dropped text](#detect-drag-and-dropped-text)
+  * [detect `dragenter`, `dragover` and `dragleave` events](#detect-dragenter-dragover-and-dragleave-events)
+  * [remove listeners](#remove-listeners)
+  * [support pasting files from the clipboard](#support-pasting-files-from-the-clipboard)
+  * [a note about `file://` urls](#a-note-about-file-urls)
+  * [license](#license)
+
+<!-- tocstop -->
+
 </details>
 
 ## fork
 This is a fork of [feross/drag-drop](https://github.com/feross/drag-drop).
 
-### HTML5 drag & drop for humans
+## HTML5 drag & drop for humans
 
 In case you didn't know, the
 [HTML5 drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
@@ -24,11 +43,17 @@ is a
 [total disaster](http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html)!
 This is an attempt to make the API usable by mere mortals.
 
-### live demo
+## install
+
+```sh
+npm i -S drag-drop
+```
+
+## live demo
 
 See [https://instant.io](https://instant.io).
 
-### features
+## features
 
 - simple API
 - supports files and directories
@@ -36,11 +61,7 @@ See [https://instant.io](https://instant.io).
 - adds a `drag` class to the drop target on hover, for easy styling!
 - optionally, get the file(s) as a Buffer (see [buffer](https://github.com/feross/buffer))
 
-### install
-
-```
-npm install drag-drop
-```
+This package works in the browser via [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) + the [exports field](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#exports) in `package.json`.
 
 This package works in the browser with [browserify](https://browserify.org). If you do not use a bundler, you can use the [standalone script](https://bundle.run/drag-drop) directly in a `<script>` tag.
 

@@ -6,6 +6,24 @@
   "files": [
     "./dist/*"
   ],
+  "exports": {
+    ".": {
+      "import": [
+        "./dist/index.js"
+      ],
+      "require": [
+        "./dist/index.cjs"
+      ]
+    },
+    "./buffer": {
+      "import": [
+        "./dist/buffer.js"
+      ],
+      "require": [
+        "./dist/buffer.cjs"
+      ]
+    }
+  },
   "scripts": {
     "start": "vite",
     "lint": "eslint \"./**/*.{ts,js}\"",
