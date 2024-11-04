@@ -12,22 +12,26 @@
   </head>
   <body>
     <h1>Drag something onto this page</h1>
-    <script src="drag-drop.js"></script>
-    <script>
+
+    <script type="module">
+      import { dragDrop as DragDrop } from '../src/index.ts'
+      import Debug from '@bicycle-codes/debug'
+      const debug = Debug()
+
       window.remove = DragDrop('body', {
         onDrop: function (files, pos, fileList, directories) {
           window.files = files
-          console.log('onDrop: ' + files.length + ' files at ' + pos.x + ', ' + pos.y)
+          debug('onDrop: ' + files.length + ' files at ' + pos.x + ', ' + pos.y)
           files.forEach(function (file) {
             console.log('- ' + file.name + ' (' + file.size + ') (' + file.type + ')')
           })
-          console.log('files array', files)
-          console.log('FileList object', fileList)
-          console.log('directories array', directories)
+          debug('files array', files)
+          debug('FileList object', fileList)
+          debug('directories array', directories)
         },
         onDropText: function (text, pos) {
           window.text = text
-          console.log('onDropText: ' + text + ' at ' + pos.x + ', ' + pos.y)
+          debug('onDropText: ' + text + ' at ' + pos.x + ', ' + pos.y)
         }
       })
     </script>

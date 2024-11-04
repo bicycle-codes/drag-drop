@@ -2,11 +2,22 @@
 import parallel from 'run-parallel'
 export default dragDrop
 
-export function dragDrop (_elem:Element|string, listeners) {
+// type Listener = ((ev:DragEvent)=>any)
+type Listener = ((files, pos?, fileList?, directories?)=>any)
+
+type ListenerObject = {
+    onDrop:(files, pos, fileList, directories)=>any;
+    onDropText?:(text, pos)=>any;
+    onDragEnter?:(event)=>any;
+    onDragOver?:(event)=>any;
+    onDragLeave?:(event)=>any;
+}
+
+export function dragDrop (_elem:Element|string, _listeners:Listener|ListenerObject) {
     let elem:Element|null
     if (typeof _elem === 'string') {
         const selector = _elem
-        elem = window.document.querySelector(_elem)
+        elem = document.querySelector(_elem)
         if (!elem) {
             throw new Error(`"${selector}" does not match any HTML elements`)
         }
@@ -18,8 +29,11 @@ export function dragDrop (_elem:Element|string, listeners) {
         throw new Error(`"${elem}" is not a valid HTML element`)
     }
 
-    if (typeof listeners === 'function') {
-        listeners = { onDrop: listeners }
+    let listeners:ListenerObject
+    if (typeof _listeners === 'function') {
+        listeners = { onDrop: _listeners }
+    } else {
+        listeners = _listeners
     }
 
     elem.addEventListener('dragenter', onDragEnter, false)
@@ -54,11 +68,15 @@ export function dragDrop (_elem:Element|string, listeners) {
                 fileItems = items.filter(item => { return item.kind === 'file' })
                 textItems = items.filter(item => { return item.kind === 'string' })
             } else if (types.length) {
-                // event.dataTransfer.items is empty during 'dragover' in Safari, so use
-                // event.dataTransfer.types as a fallback
+                // event.dataTransfer.items is empty during 'dragover' in Safari,
+                // so use event.dataTransfer.types as a fallback
                 fileItems = types.filter(item => item === 'Files')
                 textItems = types.filter(item => item.startsWith('text/'))
             } else {
+                return false
+            }
+
+            if (!('onDropText' in listeners)) {
                 return false
             }
 
