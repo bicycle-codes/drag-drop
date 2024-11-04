@@ -22,6 +22,14 @@
       "require": [
         "./dist/buffer.cjs"
       ]
+    },
+    "./min/*": {
+      "import": [
+        "./dist/*.min.js"
+      ],
+      "require": [
+        "./dist/*.min.cjs"
+      ]
     }
   },
   "scripts": {

@@ -61,9 +61,23 @@ See [https://instant.io](https://instant.io).
 - adds a `drag` class to the drop target on hover, for easy styling!
 - optionally, get the file(s) as a Buffer (see [buffer](https://github.com/feross/buffer))
 
+## API
 This package works in the browser via [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) + the [exports field](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#exports) in `package.json`.
 
-This package works in the browser with [browserify](https://browserify.org). If you do not use a bundler, you can use the [standalone script](https://bundle.run/drag-drop) directly in a `<script>` tag.
+```js
+import { dragDrop } from '@bicycle-codes/drag-drop'
+```
+
+### pre-bundled
+This exposes pre-bundled and minifed JS files too. Just copy them to a location accessible to your web server, then link in your HTML:
+
+```sh
+cp ./node_modules/@bicycle-codes/drag-drop/dist/index.min.js ./public/drag-drop.min.js
+```
+
+```html
+<script type="module" src="/drag-drop.min.js"></script>
+```
 
 ## usage
 
