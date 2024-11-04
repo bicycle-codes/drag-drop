@@ -2,13 +2,16 @@
 import parallel from 'run-parallel'
 export default dragDrop
 
-function dragDrop (elem, listeners) {
-    if (typeof elem === 'string') {
-        const selector = elem
-        elem = window.document.querySelector(elem)
+export function dragDrop (_elem:Element|string, listeners) {
+    let elem:Element|null
+    if (typeof _elem === 'string') {
+        const selector = _elem
+        elem = window.document.querySelector(_elem)
         if (!elem) {
             throw new Error(`"${selector}" does not match any HTML elements`)
         }
+    } else {
+        elem = _elem
     }
 
     if (!elem) {
@@ -127,7 +130,7 @@ function dragDrop (elem, listeners) {
         return false
     }
 
-    function onDrop (event:DragEvent) {
+    function onDrop (event) {
         event.stopPropagation()
         event.preventDefault()
         if (!event.dataTransfer) throw new Error('not dataTransfer')
@@ -180,11 +183,11 @@ function dragDrop (elem, listeners) {
     }
 
     function addDragClass () {
-        elem.classList.add('drag')
+        elem!.classList.add('drag')
     }
 
     function removeDragClass () {
-        elem.classList.remove('drag')
+        elem!.classList.remove('drag')
     }
 }
 

@@ -1,8 +1,8 @@
-const dragDrop = require('./')
-const parallel = require('run-parallel')
-const blobToBuffer = require('blob-to-buffer')
+import { dragDrop } from './index.js'
+import parallel from 'run-parallel'
+import blobToBuffer from 'blob-to-buffer'
 
-export function dragDropAsBuffer (elem, cb) {
+export function dragDropAsBuffer (elem:Element, cb) {
     return dragDrop(elem, function (files, pos, fileList) {
         const tasks = files.map(function (file) {
             return function (cb) {
@@ -17,6 +17,7 @@ export function dragDropAsBuffer (elem, cb) {
                 })
             }
         })
+
         parallel(tasks, function (err, results) {
             if (err) throw err
             cb(results, pos, fileList)
