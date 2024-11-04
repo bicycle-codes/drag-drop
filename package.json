@@ -74,7 +74,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/feross/drag-drop.git"
+    "url": "git://github.com/bicycle-codes/drag-drop.git"
   },
   "author": {
     "name": "Feross Aboukhadijeh",
