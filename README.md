@@ -1,23 +1,22 @@
-# drag-drop [![ci][ci-image]][ci-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![javascript style guide][standard-image]][standard-url]
+# drag-drop 
 
-[ci-image]: https://img.shields.io/github/workflow/status/feross/drag-drop/ci/master
-[ci-url]: https://github.com/feross/drag-drop/actions
-[npm-image]: https://img.shields.io/npm/v/drag-drop.svg
-[npm-url]: https://npmjs.org/package/drag-drop
-[downloads-image]: https://img.shields.io/npm/dm/drag-drop.svg
-[downloads-url]: https://npmjs.org/package/drag-drop
-[standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
-[standard-url]: https://standardjs.com
+![tests](https://github.com/bicycle-codes/drag-drop/actions/workflows/nodejs.yml/badge.svg)
+[![types](https://img.shields.io/npm/types/@bicycle-codes/drag-drop?style=flat-square)](README.md)
+[![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
+[![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
+[![Common Changelog](https://nichoth.github.io/badge/common-changelog.svg)](./CHANGELOG.md)
+[![install size](https://flat.badgen.net/packagephobia/install/@bicycle-codes/drag-drop)](https://packagephobia.com/result?p=@bicycle-codes/drag-drop)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 <details><summary><h2>Contents</h2></summary>
 
 <!-- toc -->
 
 - [fork](#fork)
-  * [HTML5 drag & drop for humans](#html5-drag--drop-for-humans)
-  * [live demo](#live-demo)
-  * [features](#features)
-  * [install](#install)
+- [HTML5 drag & drop for humans](#html5-drag--drop-for-humans)
+- [install](#install)
+- [live demo](#live-demo)
+- [features](#features)
   * [usage](#usage)
   * [complete example](#complete-example)
   * [get files as buffers](#get-files-as-buffers)
