@@ -1,7 +1,7 @@
 {
   "name": "@bicycle-codes/drag-drop",
   "description": "HTML5 drag & drop for humans",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "type": "module",
   "files": [
     "./dist/*"
@@ -49,6 +49,7 @@
     "@bicycle-codes/debug": "^0.6.16",
     "@bicycle-codes/tapzero": "^0.10.5",
     "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "auto-changelog": "^2.5.0",
     "esbuild": "^0.24.0",
     "eslint": "^8.57.1",
     "eslint-config-standard": "^17.1.0",

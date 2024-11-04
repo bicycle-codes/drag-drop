@@ -17,15 +17,16 @@
 - [install](#install)
 - [live demo](#live-demo)
 - [features](#features)
-  * [usage](#usage)
+- [usage](#usage)
   * [complete example](#complete-example)
   * [get files as buffers](#get-files-as-buffers)
   * [detect drag-and-dropped text](#detect-drag-and-dropped-text)
   * [detect `dragenter`, `dragover` and `dragleave` events](#detect-dragenter-dragover-and-dragleave-events)
   * [remove listeners](#remove-listeners)
   * [support pasting files from the clipboard](#support-pasting-files-from-the-clipboard)
-  * [a note about `file://` urls](#a-note-about-file-urls)
-  * [license](#license)
+- [a note about `file://` urls](#a-note-about-file-urls)
+- [test](#test)
+- [license](#license)
 
 <!-- tocstop -->
 
