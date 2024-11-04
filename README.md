@@ -64,10 +64,10 @@ This package works in the browser via [native ES modules](https://developer.mozi
 
 This package works in the browser with [browserify](https://browserify.org). If you do not use a bundler, you can use the [standalone script](https://bundle.run/drag-drop) directly in a `<script>` tag.
 
-### usage
+## usage
 
 ```js
-const dragDrop = require('drag-drop')
+import { dragDrop } from '@bicycle-codes/drag-drop'
 
 dragDrop('#dropTarget', (files, pos, fileList, directories) => {
   console.log('Here are the dropped files', files) // Array of File objects
@@ -84,7 +84,7 @@ it obvious that this is a drop target!
 ### complete example
 
 ```js
-const dragDrop = require('drag-drop')
+import { dragDrop } from '@bicycle-codes/drag-drop'
 
 // You can pass in a DOM node or a selector string!
 dragDrop('#dropTarget', (files, pos, fileList, directories) => {
@@ -121,10 +121,10 @@ dragDrop('#dropTarget', (files, pos, fileList, directories) => {
 
 ### get files as buffers
 
-If you prefer to access file data as Buffers, then just require drag-drop like this:
+If you prefer to access file data as Buffers, then just import drag-drop like this:
 
 ```js
-const dragDrop = require('drag-drop/buffer')
+import { dragDrop } from '@bicycle-codes/drag-grop/buffer'
 
 dragDrop('#dropTarget', files => {
   files.forEach(file => {
@@ -148,7 +148,7 @@ If the user highlights text and drags it, we capture that as a separate event.
 Listen for it like this:
 
 ```js
-const dragDrop = require('drag-drop')
+import { dragDrop } from '@bicycle-codes/drag-drop'
 
 dragDrop('#dropTarget', {
   onDropText: (text, pos) => {
@@ -164,7 +164,7 @@ Instead of passing just an `ondrop` function as the second argument, instead pas
 object with all the events you want to listen for:
 
 ```js
-const dragDrop = require('drag-drop')
+import { dragDrop } from '@bicycle-codes/drag-drop'
 
 dragDrop('#dropTarget', {
   onDrop: (files, pos, fileList, directories) => {
@@ -199,7 +199,7 @@ To stop listening for drag & drop events and remove the event listeners, just us
 `cleanup` function returned by the `dragDrop` function.
 
 ```js
-const dragDrop = require('drag-drop')
+import { dragDrop } from '@bicycle-codes/drag-drop'
 
 const cleanup = dragDrop('#dropTarget', files => {
   // ...
@@ -223,7 +223,7 @@ document.addEventListener('paste', event => {
 })
 ```
 
-### a note about `file://` urls
+## a note about `file://` urls
 
 Don't run your app from `file://`. For security reasons, browsers do not allow you to
 run your app from `file://`.  In fact, many of the powerful storage APIs throw errors
@@ -231,6 +231,19 @@ if you run the app locally from `file://`.
 
 Instead, start a local server and visit your site at `http://localhost:port`.
 
-### license
+## test
+
+Run some very basic tests:
+```sh
+npm test
+```
+
+For more useful tests, I recommend running the example and using it interactively:
+
+```sh
+npm start
+```
+
+## license
 
 MIT. Copyright (c) [Feross Aboukhadijeh](http://feross.org).
