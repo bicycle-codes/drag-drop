@@ -2,18 +2,21 @@
   "name": "@bicycle-codes/drag-drop",
   "description": "HTML5 drag & drop for humans",
   "version": "7.2.0",
+  "type": "module",
   "files": [
     "./dist/*"
   ],
   "scripts": {
     "start": "vite",
     "lint": "eslint \"./**/*.{ts,js}\"",
-    "example": "browserify -s DragDrop -r . > example/drag-drop.js && ecstatic example --port 4000",
-    "size": "browserify -s DragDrop -r . | minify | gzip | wc -c",
     "toc": "markdown-toc --maxdepth 3 -i README.md",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-esm:min && npm run build-cjs:min",
+    "build-cjs": "esbuild src/*.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
+    "build-cjs:min": "esbuild src/*.ts --format=cjs --minify --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.min.cjs --sourcemap",
+    "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
+    "build-esm:min": "esbuild ./src/*.ts --format=esm --keep-names --bundle --tsconfig=tsconfig.build.json --minify --out-extension:.js=.min.js --outdir=./dist --sourcemap",
     "build-example": "mkdir -p ./public && rm -rf ./public/* && VITE_DEBUG_MODE=staging vite --mode staging --base=\"/drag-drop\" build",
-    "test": "tape test/*.js",
+    "test": "esbuild ./test/basic.ts",
     "preversion": "npm run lint",
     "version": "npm run toc && auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
     "postversion": "git push --follow-tags && npm publish",
@@ -26,6 +29,8 @@
   "devDependencies": {
     "@bicycle-codes/debug": "^0.6.16",
     "@bicycle-codes/tapzero": "^0.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "esbuild": "^0.24.0",
     "eslint": "^8.57.1",
     "eslint-config-standard": "^17.1.0",
     "markdown-toc": "^1.2.0",
