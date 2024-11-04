@@ -17,6 +17,8 @@
 - [install](#install)
 - [live demo](#live-demo)
 - [features](#features)
+- [API](#api)
+  * [pre-bundled](#pre-bundled)
 - [usage](#usage)
   * [complete example](#complete-example)
   * [get files as buffers](#get-files-as-buffers)
