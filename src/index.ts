@@ -6,7 +6,7 @@ export default dragDrop
 type Listener = ((files, pos?, fileList?, directories?)=>any)
 
 type ListenerObject = {
-    onDrop:(files, pos, fileList, directories)=>any;
+    onDrop:(files:FileList, pos, fileList, directories)=>any;
     onDropText?:(text, pos)=>any;
     onDragEnter?:(event)=>any;
     onDragOver?:(event)=>any;
@@ -53,8 +53,8 @@ export function dragDrop (_elem:Element|string, _listeners:Listener|ListenerObje
         elem.removeEventListener('drop', onDrop, false)
     }
 
-    function isEventHandleable (event:DragEvent) {
-        if (!event.dataTransfer) throw new Error('not event.dataTransfer')
+    function isEventHandleable (event:DragEvent):boolean {
+        if (!event.dataTransfer) return false
 
         if (event.dataTransfer.items || event.dataTransfer.types) {
             // Only add "drag" class when `items` contains items that are able to be
